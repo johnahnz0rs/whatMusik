@@ -11,4 +11,3 @@ module.exports = router
     .delete('/api/deleteOne', controller.deleteOne)
     .get('/lolz', controller.lolz)
 ;
-

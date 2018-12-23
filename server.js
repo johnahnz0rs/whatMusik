@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // serve react files
 app.use(express.static(path.join(__dirname, 'client/build')));
-// app.use('*', express.static(path.join(__dirname, 'client/build')));
+app.use('*', express.static(path.join(__dirname, 'client/build')));
 
 
 // require j00r dbase

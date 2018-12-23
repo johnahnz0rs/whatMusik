@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import UserPage from './UserPage';
 import Login from './Login';
@@ -12,7 +12,6 @@ class ContentArea extends React.Component {
         super(props);
         this.state = {
             accessToken: null,
-
         };
         // declare methods here
         this.getDatToken = this.getDatToken.bind(this);
@@ -22,8 +21,9 @@ class ContentArea extends React.Component {
     }
 
     getDatToken = token => {
-        this.setState({accessToken: token});
-        this.props.history.push('/user');
+        this.setState({accessToken: token}, () => {
+            this.props.history.push('/user');
+        });
     };
 
     render() {
@@ -32,9 +32,12 @@ class ContentArea extends React.Component {
             <React.Fragment>
                 <div className="my-background">
 
-                    <Route path="/" exact component={Login} />
-                    <Route path="/user/:token" exact render={() => <GotAccessToken getDatToken={this.getDatToken} />} />
-                    {this.state.accessToken && <Route path="/user" exact render={() => <UserPage accessToken={this.accessToken}/>}/>}
+                    <Switch>
+                        <Route path="/" exact component={Login} />
+                        <Route path="/user/:token" exact render={() => <GotAccessToken getDatToken={this.getDatToken} />} />
+                        <Route path="/user" exact render={() => <UserPage accessToken={this.state.accessToken}/> } />
+                    </Switch>
+
                 </div>
             </React.Fragment>
         );

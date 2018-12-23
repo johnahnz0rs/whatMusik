@@ -1,5 +1,6 @@
 {
-  "name": "whatmuzak",
+  "name": "whatmusik",
+  "description": "whatMusic.xyz by z0rs.org",
   "version": "1.0.0",
   "scripts": {
     "server": "nodemon server.js",

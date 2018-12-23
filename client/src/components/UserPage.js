@@ -27,7 +27,8 @@ class UserPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        console.log('props', this.props);
+        console.log('state', this.state);
         //
         // // const accessToken = this.props.location.search.split('?access_token=')[1];
         // const accessToken = this.props.match.params.token;
@@ -46,7 +47,7 @@ class UserPage extends React.Component {
 
 
         return(<React.Fragment>
-            <div className="" style={{}}>
+            <div className="">
 
                 (this.state.accessToken && <MyNavbar />}
 

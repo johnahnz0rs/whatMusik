@@ -23,11 +23,13 @@ class GotAccessToken extends React.Component {
         // console.log('from params', accessToken);
         // this.setState({accessToken: accessToken});
 
-        this.getDatToken(this.props.match.params.token);
+        // this.getDatToken(this.props.match.params.token);
+        this.getDatToken(accessToken);
 
     }
 
     getDatToken = (token) => {
+        console.log('*** GotAccessToken.getDatToken(token) ***', token);
         this.props.getDatToken(token);
     };
 

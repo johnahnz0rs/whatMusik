@@ -1,14 +1,16 @@
 import React from 'react';
+import { Link, withRouter } from "react-router-dom";
 
 
 class Login extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //     };
-    //     // declare methods here
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+        // declare methods here
+        this.loginSpotify = this.loginSpotify.bind(this);
+    }
 
     componentDidMount() {
 
@@ -16,10 +18,19 @@ class Login extends React.Component {
 
     }
 
+    loginSpotify = () => {
+        fetch('/api/spotify')
+            .then(res => res.json())
+            .then(whatev => console.log(whatev))
+            .catch(err => console.log(err));
+    };
+
     render() {
 
         // const spotifyLoginURL = 'https://whatmuzak.herokuapp.com/api/login-spotify';
-        const spotifyLoginURL = 'http://localhost:5000/api/login-spotify';
+
+        // const spotifyLoginURL = "http://localhost:5000/api/login-spotify";
+        const spotifyLoginURL = '/api/login-spotify';
 
         return(
             <React.Fragment>
@@ -32,6 +43,22 @@ class Login extends React.Component {
 
 
                     <div className="text-center">
+
+                        {/*<button*/}
+                            {/*className="btn btn-sm btn-outline-primary"*/}
+                            {/*style={{borderWidth: '2px'}}*/}
+                            {/*onClick={this.loginSpotify}>*/}
+                            {/*<span className="font-weight-bold"><u>TEST TEST TEST Sign in with Spotify</u></span>*/}
+                        {/*</button>*/}
+
+                        {/*<Link to={spotifyLoginURL}>*/}
+                            {/*<button*/}
+                                {/*className="btn btn-sm btn-outline-primary"*/}
+                                {/*style={{borderWidth: '2px'}}>*/}
+                                {/*<span className="font-weight-bold"><u>Sign in with Spotify</u></span>*/}
+                            {/*</button>*/}
+                        {/*</Link>*/}
+
                         <a href={spotifyLoginURL}>
                             <button
                                 className="btn btn-sm btn-outline-primary"
@@ -39,6 +66,7 @@ class Login extends React.Component {
                                 <span className="font-weight-bold"><u>Sign in with Spotify</u></span>
                             </button>
                         </a>
+
                     </div>
 
                 </div>
@@ -49,4 +77,4 @@ class Login extends React.Component {
 
 }
 
-export default Login;
+export default withRouter(Login);

@@ -11,19 +11,22 @@ let redirect_uri = process.env.REDIRECT_URI;
 
 module.exports = {
 
-
-    whenAppLoads: function(req, res) {
+    /* dev */
+    whenAppLoads: (req, res) => {
         console.log(req.body);
         res.json({hello: 'hello from backend server!'});
     },
 
-    //
-    // LOGIN TO MUSIC SERVICES
-    //
+
+
+
+
+
+    /* LOGIN TO MUSIC SERVICES */
 
     // @ROUTE /api/login-spotify
     // @DESC login to spotify OAuth v2
-    loginSpotify: function(req, res) {
+    loginSpotify: (req, res) => {
         console.log('*** controller.loginSpotify() ***', req.body);
         res.redirect(
             'https://accounts.spotify.com/authorize?' +
@@ -38,7 +41,7 @@ module.exports = {
 
     // @ROUTE /api/callback-spotify
     // @DESC spotify's callback url
-    callbackSpotify: function(req, res) {
+    callbackSpotify: (req, res) => {
         console.log('*** controller.callbackSpotify() ***', req.body);
         let code = req.query.code || null;
         let authOptions = {
@@ -57,7 +60,7 @@ module.exports = {
             },
             json: true
         };
-        request.post(authOptions, function(error, response, body) {
+        request.post(authOptions, (error, response, body) => {
             let access_token = body.access_token;
             let uri = process.env.FRONTEND_URI + '/user/' + access_token;
             // console.log('/user/' + access_token);

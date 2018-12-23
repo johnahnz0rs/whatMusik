@@ -14,7 +14,7 @@ class Login extends React.Component {
 
     componentDidMount() {
 
-        console.log(this.props);
+        console.log('johnahnz0rs is l33t', this.props);
 
     }
 
